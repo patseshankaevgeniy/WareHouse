@@ -1,0 +1,56 @@
+$space: 30px;
+
+:host{
+display: grid;
+height: 100%;
+grid-template-rows: auto $space 1fr;
+grid-template-areas: "head"
+"."
+"body";
+
+.head{
+  grid-area: head;
+  height: 70px;
+  background-color: #D3D3D3;
+  display: grid;
+
+
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-rows: 70px;
+  grid-template-areas: "title . signInbtn signUpbtn ";
+
+  .header{
+    grid-area: title;
+    font-size: xx-large;
+    text-align: center;
+
+  }
+
+  .sign-in{
+    grid-area: signInbtn;
+    width: 120px;
+    height: 100%;
+    gap: 10px;
+    margin-right: 30px;
+    border-radius: 10%;
+  }
+
+  .sign-up{
+    grid-area: signUpbtn;
+    width: 120px;
+    height: 100%;
+    gap: 10px;
+    margin-right: 30px;
+  }
+
+
+}
+
+.body{
+  grid-area: body;
+  padding: 100px;
+  height: 100%;
+  float: left;
+  
+}
+}

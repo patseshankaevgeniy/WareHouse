@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "projects": {
+    "wareHouseapp": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/wareHouseapp",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.json",
+            "aot": true
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "wareHouseapp:build"
+          }
+        }
+      }
+    }},
+  "defaultProject": "wareHouseapp",
+  "cli": {
+    "analytics": false
+  },
+  "styles": [
+    "node_modules/bootstrap/scss/bootstrap.scss",
+    "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+    "src/styles.scss"
+  ],
+  "scripts": [
+    "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+  ]
+}
