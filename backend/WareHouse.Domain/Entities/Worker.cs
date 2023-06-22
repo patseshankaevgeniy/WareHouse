@@ -1,10 +1,11 @@
-﻿namespace WareHouse.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace WareHouse.Domain.Entities;
+
+public class Worker : BaseEntity
 {
-    public class Worker : BaseEntity
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-    }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+
+    public ICollection<Department> Departments { get; set; } = default!;
 }
