@@ -1,0 +1,89 @@
+<div class="departments-add-btn">
+  <button class="add-btn" (click)="onChangeClick()">
+    Add department
+  </button>
+</div>
+
+<div class="departments-add-new" *ngIf="canAdd">
+  <input value="{{departmentName}}">
+  <button (click)="addNewDepartment()">Add</button>
+</div>
+
+
+<div 
+  class="departments-table__header"
+>
+  <div 
+    class="departments-table__header__id"
+  ></div>
+
+  <div 
+    class="departments-table__header__name"
+  >Название</div>
+
+  <div 
+    class="departments-table__header__workers"
+  >Кол-во работников</div>
+
+  <div 
+    class="departments-table__header__products"
+  >Кол-во продуктов</div>
+</div>
+
+<div 
+  class="departments-table__body"
+>
+  <div 
+    class="departments-table__item"
+    *ngFor="let department of departments"
+    (click)="onEditClick(department.id)"
+  >
+
+    <div 
+      class="departments-table__name"
+    >
+     
+      <div 
+        class="departments-table__name__text"
+      >{{ department.name }}</div>
+
+    </div>
+
+    <div 
+      class="departments-table__workers"
+    >
+      <div 
+        class="departments-table__workers__count"
+      >
+        {{department.workers.length}}
+      </div>
+      
+    </div>
+
+    <div 
+      class="departments-table__products"
+    >
+      <div
+        class="departments-table__products__count"
+      >{{department.products.length}}</div>
+
+      
+
+    </div>
+
+    <div 
+      class="departments-table__actions"
+      (click)="onEditClick(department.id);$event.stopPropagation()"
+    >
+      <div class="departments-table__actions_edit">
+        Edit
+      </div>
+      
+      <div 
+        class="departments-table__actions_remove"
+        (click)="onDeleteClick(department.id);$event.stopPropagation()"
+      >
+      Delete
+      </div>
+    </div>
+  </div>
