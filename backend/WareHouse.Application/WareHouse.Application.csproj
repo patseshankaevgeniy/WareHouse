@@ -15,8 +15,4 @@
     <ProjectReference Include="..\WareHouse.Domain\WareHouse.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Auth\" />
-  </ItemGroup>
-
 </Project>

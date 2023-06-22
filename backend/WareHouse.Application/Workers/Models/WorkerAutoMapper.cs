@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Linq;
 using WareHouse.Domain.Entities;
 
 namespace WareHouse.Application.Workers.Models
@@ -7,7 +8,9 @@ namespace WareHouse.Application.Workers.Models
     {
         public WorkerAutoMapper()
         {
-            CreateMap<Worker, WorkerDto>().ReverseMap();
+            CreateMap<Worker, WorkerModel>()
+                .ForMember(x => x.Departments, o => o.MapFrom(w => w.Departments.Select(d => d.Name)))
+                .ReverseMap();
         }
     }
 }

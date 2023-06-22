@@ -7,6 +7,6 @@ public class ProductAutoMapper : Profile
 {
     public ProductAutoMapper()
     {
-        CreateMap<Product, ProductDto>().ReverseMap();
+        CreateMap<Product, ProductModel>().ReverseMap();
     }
 }

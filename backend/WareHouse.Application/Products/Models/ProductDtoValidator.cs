@@ -2,7 +2,7 @@
 
 namespace WareHouse.Application.Products.Models;
 
-public class ProductDtoValidator : AbstractValidator<ProductDto>
+public class ProductDtoValidator : AbstractValidator<ProductModel>
 {
     public ProductDtoValidator()
     {

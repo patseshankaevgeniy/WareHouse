@@ -21,6 +21,21 @@ namespace WareHouse.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DepartmentWorker", b =>
+                {
+                    b.Property<int>("DepartmentsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DepartmentsId", "WorkersId");
+
+                    b.HasIndex("WorkersId");
+
+                    b.ToTable("DepartmentWorker", "dbo");
+                });
+
             modelBuilder.Entity("WareHouse.Domain.Entities.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -53,6 +68,8 @@ namespace WareHouse.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("Products", "dbo");
                 });
 
@@ -70,15 +87,38 @@ namespace WareHouse.Persistence.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Login")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Workers", "dbo");
+                });
+
+            modelBuilder.Entity("DepartmentWorker", b =>
+                {
+                    b.HasOne("WareHouse.Domain.Entities.Department", null)
+                        .WithMany()
+                        .HasForeignKey("DepartmentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WareHouse.Domain.Entities.Worker", null)
+                        .WithMany()
+                        .HasForeignKey("WorkersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WareHouse.Domain.Entities.Product", b =>
+                {
+                    b.HasOne("WareHouse.Domain.Entities.Department", null)
+                        .WithMany("Products")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WareHouse.Domain.Entities.Department", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
