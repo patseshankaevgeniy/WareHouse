@@ -92,7 +92,7 @@ export class WareHouseAPIClient {
      * @param body (optional) 
      * @return Success
      */
-    createDepartment(body: DepartmentDto | undefined): Observable<SwaggerResponse<DepartmentDto>> {
+    createDepartment(body: CreateDepartmentDto | undefined): Observable<SwaggerResponse<DepartmentDto>> {
         let url_ = this.baseUrl + "/api/departments";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -977,7 +977,7 @@ export class WareHouseAPIClient {
      * @param body (optional) 
      * @return Created
      */
-    createWorker(departmentId: number, body: WorkerDto | undefined): Observable<SwaggerResponse<WorkerDto>> {
+    createWorker(departmentId: number, body: CreateWorkerDto | undefined): Observable<SwaggerResponse<WorkerDto>> {
         let url_ = this.baseUrl + "/api/workers/{departmentId}";
         if (departmentId === undefined || departmentId === null)
             throw new Error("The parameter 'departmentId' must be defined.");
@@ -1092,6 +1092,82 @@ export class ApiError implements IApiError {
 export interface IApiError {
     statusCode: number;
     message: string | undefined;
+}
+
+export class CreateDepartmentDto implements ICreateDepartmentDto {
+    name!: string | undefined;
+
+    constructor(data?: ICreateDepartmentDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+        }
+    }
+
+    static fromJS(data: any): CreateDepartmentDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new CreateDepartmentDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        return data;
+    }
+}
+
+export interface ICreateDepartmentDto {
+    name: string | undefined;
+}
+
+export class CreateWorkerDto implements ICreateWorkerDto {
+    firstName!: string | undefined;
+    lastName!: string | undefined;
+
+    constructor(data?: ICreateWorkerDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.firstName = _data["firstName"];
+            this.lastName = _data["lastName"];
+        }
+    }
+
+    static fromJS(data: any): CreateWorkerDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new CreateWorkerDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["firstName"] = this.firstName;
+        data["lastName"] = this.lastName;
+        return data;
+    }
+}
+
+export interface ICreateWorkerDto {
+    firstName: string | undefined;
+    lastName: string | undefined;
 }
 
 export class DepartmentDto implements IDepartmentDto {
