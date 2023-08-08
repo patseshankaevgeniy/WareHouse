@@ -66,6 +66,10 @@ public class WorkersService : IWorkersService
         if (worker == null)
         {
             var department = await _departmentRepository.FirstAsync(x => x.Id == departmentId);
+            if (department == null)
+            {
+                throw new NotFoundException($"Can't find department with id: {departmentId}");
+            }
             worker = new Worker
             {
                 FirstName = workerDto.FirstName,

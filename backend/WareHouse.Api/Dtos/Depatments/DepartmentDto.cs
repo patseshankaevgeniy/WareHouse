@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WareHouse.Api.Dtos
+namespace WareHouse.Api.Dtos.Depatments
 {
     public class DepartmentDto
     {

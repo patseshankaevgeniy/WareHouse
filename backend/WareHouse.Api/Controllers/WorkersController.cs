@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WareHouse.Api.Dtos;
+using WareHouse.Api.Dtos.Workers;
 using WareHouse.Application.Common.Models;
 using WareHouse.Application.Workers;
 using WareHouse.Application.Workers.Models;
@@ -52,10 +53,10 @@ public class WorkersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiError))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(ApiError))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiError))]
-    public async Task<ActionResult<WorkerDto>> CreateAsync(int departmentId, WorkerDto workerDto)
+    public async Task<ActionResult<WorkerDto>> CreateAsync(int departmentId, CreateWorkerDto createWorkerDto)
     {
-        var worker = await _workersService.CreateAsync(departmentId, _mapper.Map<WorkerModel>(workerDto));
-        workerDto = _mapper.Map<WorkerDto>(worker);
+        var worker = await _workersService.CreateAsync(departmentId, _mapper.Map<WorkerModel>(createWorkerDto));
+        var workerDto = _mapper.Map<WorkerDto>(worker);
         return Created($"api/workers/{workerDto.Id}", workerDto);
     }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WareHouse.Api.Dtos;
+using WareHouse.Api.Dtos.Depatments;
 using WareHouse.Application.Common.Models;
 using WareHouse.Application.Departments;
 using WareHouse.Application.Departments.Models;
@@ -51,10 +52,10 @@ namespace WareHouse.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DepartmentDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiError))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiError))]
-        public async Task<ActionResult<DepartmentDto>> CreateAsync(DepartmentDto departmentDto)
+        public async Task<ActionResult<DepartmentDto>> CreateAsync(CreateDepartmentDto createDepartmentDto)
         {
-           var department = await _departmentsService.CreateAsync(_mapper.Map<DepartmentModel>(departmentDto));
-            departmentDto = _mapper.Map<DepartmentDto>(department);
+           var department = await _departmentsService.CreateAsync(_mapper.Map<DepartmentModel>(createDepartmentDto));
+           var departmentDto = _mapper.Map<DepartmentDto>(department);
             return Created($"api/departments/{departmentDto.Id}", departmentDto);
         }
 
