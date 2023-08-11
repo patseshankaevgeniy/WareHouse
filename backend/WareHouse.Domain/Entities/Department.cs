@@ -8,5 +8,4 @@ public class Department : BaseEntity
 
     public ICollection<Product> Products { get; set; } = default!;
     public ICollection<Worker> Workers { get; set; } = default!;
-
 }

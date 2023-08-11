@@ -9,6 +9,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Worker> Workers { get; set; }
     public DbSet<Department> Departments { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
