@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using WareHouse.Application.Auth;
 using WareHouse.Application.Departments;
 using WareHouse.Application.Departments.Models;
 using WareHouse.Application.Products;
@@ -17,6 +18,7 @@ public static class DependencyInjections
         services.AddScoped<IDepartmentsService, DepartmentsService>();
         services.AddScoped<IProductsService, ProductsService>();
         services.AddScoped<IWorkersService, WorkersService>();
+        services.AddScoped<IAuthService, AuthService>();
 
         // Mappers
         services.AddAutoMapper(typeof(DepartmentAutoMapper), typeof(ProductAutoMapper));
