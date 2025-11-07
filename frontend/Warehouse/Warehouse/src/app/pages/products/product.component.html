@@ -1,0 +1,63 @@
+<div class="products-add-btn">
+  <button class="add-btn" >
+    Add product
+  </button>
+</div>
+
+<div 
+  class="products-table__header"
+>
+  <div 
+    class="products-table__header__id"
+  ></div>
+
+  <div 
+    class="products-table__header__name"
+  >Название</div>
+
+  <div 
+    class="products-table__header__department"
+  >Номер Отдела</div>
+</div>
+
+<div 
+  class="products-table__body"
+>
+  <div 
+    class="products-table__item"
+    *ngFor="let product of products"
+  >
+    <div 
+      class="products-table__name"
+    >
+     
+      <div 
+        class="products-table__name__text"
+      >{{ product.name }}</div>
+
+    </div>
+
+    <div 
+      class="products-table__department"
+    >
+      <div 
+        class="products-table__department__id"
+      >
+      {{ product.departmentId }}
+      </div>
+      
+    </div>
+
+    <div 
+      class="products-table__actions"
+      (click)="onEditClick(product.id);$event.stopPropagation()"
+    >
+      <div class="products-table__actions_edit"
+      >Edit</div>
+      
+      <div 
+        class="products-table__actions_remove"
+        (click)="onDeleteClick(product.id);$event.stopPropagation()"
+      >Delete</div>
+    </div>
+  </div>

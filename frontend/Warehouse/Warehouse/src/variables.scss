@@ -1,0 +1,63 @@
+$base-color: #605BFF;
+
+body {
+  --navigation-bar-width: 218px;
+
+  --page-border-radius: 10px;
+  --page-box-shadow: 0px 0px 14px rgba(3, 2, 41, 0.03);
+  --sub-page-width: 860px;
+
+ 
+  --button-height-small: 30px;
+  --button-height-medium: 40px;
+  --button-height-large: 50px;
+  --button-border-radius: 10px;
+
+  --button-text-color-primary: #F7F7F8;
+  --button-background-primary: #605BFF;
+
+  --button-text-color-outline: #605BFF;
+  --button-border-color-outline: #CAC9F2;
+  --button-background-color-outline: transparent;
+
+  --button-text-color-danger: #D11A2A;
+  --button-background-color-danger: #FCF1F2;
+
+  --button-text-color-danger-outline: #D11A2A;
+  --button-border-color-danger-outline: #FCB1B1;
+  --button-background-color-danger-outline: transparent;
+
+  --button-opacity-hover: 80%;
+  --button-opacity-disabled: 30%;
+
+  // Inputs
+  --input-height: 40px;
+  --input-border-radius: 10px;
+  --input-background: #F7F7F8;
+  --input-placeholder-opacity: 0.7;
+  --input-error-color: rgba(240, 92, 92, 0.8);
+  --input-error-message-top: 8px;
+  --input-error-message-left: 10px;
+  --input-disabled-text-color: #BEBECD;
+
+  // Selects
+  --select-options-background: #FFFFFF;
+  --select-options-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1405);
+  --select-options-border-radius: 10px;
+  --select-options-selected-backgound: rgba(96, 91, 255, 0.08);
+
+  // Links
+  --link-text-color: #605BFF;
+
+  --background-primary: #F7F7F8;
+  --background-secondary: #FFFFFF;
+  --system-primary: #605BFF;
+
+  --text-primary: #030229;
+  --text-secondary: #FFFFFF;
+
+  --color-red: #E71D36;
+  --color-yelow: #FFD66B;
+
+  --font-primary: 'Nunito';
+}

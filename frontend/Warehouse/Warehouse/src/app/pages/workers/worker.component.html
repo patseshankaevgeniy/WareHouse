@@ -1,0 +1,81 @@
+<div class="workers-add-btn">
+  <button class="add-btn" >
+    Add worker
+  </button>
+</div>
+
+<div 
+  class="workers-table__header"
+>
+  <div 
+    class="workers-table__header__id"
+  ></div>
+
+  <div 
+    class="workers-table__header__firstname"
+  >Имя</div>
+
+  <div 
+    class="workers-table__header__lastname"
+  >Фамилия</div>
+
+  <div 
+    class="workers-table__header__departments"
+  >Кол-во отделов</div>
+</div>
+
+<div 
+  class="workers-table__body"
+>
+  <div 
+    class="workers-table__item"
+    *ngFor="let worker of workers"
+  >
+    <div 
+      class="workers-table__firstname"
+    >
+     
+      <div 
+        class="workers-table__firstname__text"
+      >{{ worker.firstName }}</div>
+
+    </div>
+
+    <div 
+      class="workers-table__lastname"
+    >
+      <div 
+        class="workers-table__lastname__text"
+      >
+      {{ worker.lastName }}
+      </div>
+      
+    </div>
+
+    <div 
+      class="workers-table__departments"
+    >
+      <div
+        class="workers-table__departments__count"
+      > {{worker.departments.length}}</div>
+
+      
+
+    </div>
+
+    <div 
+      class="workers-table__actions"
+      (click)="onEditClick(worker.id);$event.stopPropagation()"
+    >
+      <div class="workers-table__actions_edit">
+       Edit
+      </div>
+      
+      <div 
+        class="workers-table__actions_remove"
+        (click)="onDeleteClick(worker.id);$event.stopPropagation()"
+      >
+      Delete
+      </div>
+    </div>
+  </div>

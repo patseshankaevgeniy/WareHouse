@@ -1,0 +1,174 @@
+$space: 30px;
+
+$firstname-height: 93px;
+$lastname-height: 180px;
+$departments-height: 50px;
+$actions-height: 100px;
+
+:host {
+  display: grid;
+  width: 100%;
+  grid-template-rows: 50px auto 20px 1fr;
+  grid-template-areas: "addButton"
+    "header"
+    "."
+    "body";
+
+    .workers-add-btn{
+      grid-area: addButton;
+      width: 130px;
+      height: 50px;
+
+      .add-btn{
+        height: 100%;
+      }
+    }
+
+    .workers-table__header {
+      grid-area: header;
+  
+      display: grid;
+      grid-template-columns: $space 29px 60px $firstname-height 60px 100px 60px $departments-height 60px $actions-height $space;
+      grid-template-areas: ". id . firstName . lastName . departments . . .";
+  
+      .workers-table__header__id {
+        font:400;
+        grid-area: id;
+        margin-left: 5px;
+      }
+  
+      .workers-table__header__firstname {
+        font:400;
+        grid-area: firstName;
+        margin-left: 8px;
+      }
+  
+      .workers-table__header__lastname {
+        font:400;
+        grid-area: lastName;
+        margin-left: 8px;
+      }
+  
+      .workers-table__header__departments {
+        font:400;
+        grid-area: departments;
+        text-align: end;
+      }
+    }
+
+    .workers-table__body {
+      grid-area: body;
+  
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      height: 78vh;
+      padding: 20px;
+      gap: 10px;
+  
+      overflow-y: scroll;
+      
+      .workers-table__item {
+        width: 700px;
+        display: grid;
+        align-items: center;
+        grid-template-columns: $space 29px 60px $firstname-height 60px 100px 60px $departments-height 60px $actions-height $space;
+        grid-template-areas: ". id . firstName . lastName . departments . actions .";
+  
+        background: var(--background-secondary);
+        min-height: 70px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 14px rgba(3, 2, 41, 0.07);
+  
+        .workers-table__firstname {
+          grid-area: firstName;
+  
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 10px;
+  
+          .workers-table__name__text {
+            font:400
+          }
+        }
+  
+        .workers-table__lastname {
+          grid-area: lastName;
+  
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+  
+          .workers-table__lastname__text {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+          }
+        }
+  
+        .workers-table__departments {
+          grid-area: departments;
+  
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: baseline;
+          gap: 3px;
+  
+          .workers-table__departments__count {
+            font:400
+          }
+        }
+  
+        .workers-table__actions {
+          grid-area: actions;
+  
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 10px;
+  
+          .workers-table__actions_edit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            transition: outline 0.09s linear;
+  
+            .workers-table__actions_edit-icon {
+              color: var(--color-yelow);
+            }
+  
+            &:hover {
+              outline: 2.5px solid #dedde0;
+            }
+          }
+  
+          .workers-table__actions_remove {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            transition: outline 0.09s linear;
+  
+            .workers-table__actions_remove-icon {
+              color: var(--color-red);
+            }
+  
+            &:hover {
+              outline: 2.5px solid #dedde0;
+            }
+          }
+        }
+      }
+    }
+}
